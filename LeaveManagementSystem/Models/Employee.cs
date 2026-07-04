@@ -7,7 +7,13 @@ using System.Threading.Tasks;
 
 namespace LeaveManagementSystem.Models
 {
-    public class Employee : IEmployee
+    public class Employee 
     {
+        public  int id { get; set; }
+        public  string Name { get; set; }
+        public  Department Department { get; set; }
+        public  DateOnly HireDate { get; set; }
+
+
     }
 }

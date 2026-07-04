@@ -8,5 +8,6 @@ namespace LeaveManagementSystem.Interfaces
 {
     public interface IEmployee
     {
+        public void RequestLeave();
     }
 }
