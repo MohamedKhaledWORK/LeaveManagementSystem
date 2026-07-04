@@ -15,6 +15,7 @@ namespace LeaveManagementSystem.Interfaces
         public bool AddEmployee(Employee employee);
         public bool RemoveEmployee(Employee employee);
         public Employee GetEmployee(int id);
+        public LeaveRequest GetLeaveRequest(int id);
 
     }
 }

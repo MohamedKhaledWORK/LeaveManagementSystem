@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace LeaveManagementSystem.Models
 {
@@ -16,6 +17,11 @@ namespace LeaveManagementSystem.Models
         public string Reason { get; set; }
         public LeaveType Type { get; set; }
         public LeaveStatues State { get; set; }
+        public override string ToString()
+        {
+            return $"ID: {Id} | Employee: {Employee.Name} | Start Date: {StartDate} | End Date: {EndDate} | Reason: {Reason} | Type: {Type} | State: {State}";
+        }
+
 
     }
 }

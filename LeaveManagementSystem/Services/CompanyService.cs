@@ -1,4 +1,5 @@
-﻿using LeaveManagementSystem.Interfaces;
+﻿using LeaveManagementSystem.Enums;
+using LeaveManagementSystem.Interfaces;
 using LeaveManagementSystem.Models;
 using System;
 using System.Collections.Generic;
@@ -35,16 +36,34 @@ namespace LeaveManagementSystem.Services
             return true;
         }
 
-        public Employee GetEmployee(int id)
+        public Employee? GetEmployee(int id)
         {
-          return company.Employee[id];
+            if (company.Employee.TryGetValue(id, out Employee? employee))
+            {
+                return employee;
+            }
+
+            Console.WriteLine($"❌ No employee found with ID: {id}");
+            return null;
         }
+        public LeaveRequest GetLeaveRequest(int id)
+        {
+            var Request = company.LeaveRequests.FirstOrDefault(l => l.Id == id);
+            if (Request == null)
+            {
+                Console.WriteLine("Leave Request not found");
+                return null;
+            }
+            return Request;
+        }
+        public List<Department> ViewDepartments() => company.Departments?.ToList() ?? new List<Department>();
 
+        public List<Employee> ViewEmployees() => company.Employee?.Values?.ToList() ?? new List<Employee>();
 
-        public List<Department> ViewDepartments() => company.Departments.ToList();
+        public List<LeaveRequest> ViewLeaveRequests() => company.LeaveRequests?.ToList() ?? new List<LeaveRequest>();
+        public List<LeaveRequest> ViewAcceptedLeaveRequests() => company.LeaveRequests?.Where(l=>l.State==LeaveStatues.Approved)?.ToList() ?? new List<LeaveRequest>();
+        public List<LeaveRequest> ViewRejectedLeaveRequests() => company.LeaveRequests?.Where(l => l.State == LeaveStatues.Rejected)?.ToList() ?? new List<LeaveRequest>();
 
-        public List<Employee> ViewEmployees() => company.Employee.Values.ToList();
-
-        public List<LeaveRequest> ViewLeaveRequests() => company.LeaveRequests.ToList();
+      
     }
 }

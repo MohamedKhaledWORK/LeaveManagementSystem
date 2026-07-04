@@ -13,7 +13,10 @@ namespace LeaveManagementSystem.Models
         public  string Name { get; set; }
         public  Department Department { get; set; }
         public  DateOnly HireDate { get; set; }
-
+        public override string ToString()
+        {
+            return $"ID: {id} | Name: {Name} | Department: {Department.Name} | Hire Date: {HireDate}";
+        }
 
     }
 }
