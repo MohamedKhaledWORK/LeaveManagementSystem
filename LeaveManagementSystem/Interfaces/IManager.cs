@@ -9,7 +9,7 @@ namespace LeaveManagementSystem.Interfaces
 {
     public interface IManager : IEmployee
     {
-        public void ApproveLeave();
-        public void RejectLeave();
+        public bool ApproveLeave(int id);
+        public bool RejectLeave(int id);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using LeaveManagementSystem.Interfaces;
+using LeaveManagementSystem.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,24 @@ namespace LeaveManagementSystem.Services
 {
     public class EmployeeService : IEmployee
     {
+        Company company = Company.Instance;
 
-        public void RequestLeave()
+        public bool RequestLeave(LeaveRequest leaveRequest)
         {
-            throw new NotImplementedException();
+            if (leaveRequest == null)
+            {
+                Console.WriteLine("Invalid data");
+                return false;
+            }
+            if (leaveRequest.Employee == null)
+            {
+                Console.WriteLine("Invalid Employee data");
+                return false;
+            }
+
+            company.LeaveRequests.Add(leaveRequest);
+            Console.WriteLine("Request Submitted");
+            return true;
         }
 
     }

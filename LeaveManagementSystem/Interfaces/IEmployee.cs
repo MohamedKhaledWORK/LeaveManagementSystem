@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LeaveManagementSystem.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace LeaveManagementSystem.Interfaces
 {
     public interface IEmployee
     {
-        public void RequestLeave();
+        public bool RequestLeave(LeaveRequest leaveRequest);
     }
 }

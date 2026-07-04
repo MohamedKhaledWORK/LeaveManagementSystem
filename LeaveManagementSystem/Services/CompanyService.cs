@@ -10,34 +10,41 @@ namespace LeaveManagementSystem.Services
 {
     public class CompanyService : ICompany
     {
-        public void AddEmployee(Employee employee)
+        Company company = Company.Instance;
+        public bool AddEmployee(Employee employee)
         {
-            throw new NotImplementedException();
+            if(employee == null)
+            {
+                Console.WriteLine("Invalid employee data");
+                return false;
+            }
+            company.Employee.Add(employee.id, employee);
+            Console.WriteLine($"Employee {employee.Name} added successfully!");
+            return true;
+        }
+        public bool RemoveEmployee(Employee employee)
+        {
+            if (employee == null)
+            {
+                Console.WriteLine("Invalid employee data");
+                return false;
+            }
+            string name= employee.Name;
+            company.Employee.Remove(employee.id);
+            Console.WriteLine($"Employee {name} Removed successfully!");
+            return true;
         }
 
         public Employee GetEmployee(int id)
         {
-            throw new NotImplementedException();
+          return company.Employee[id];
         }
 
-        public void RemoveEmployee(Employee employee)
-        {
-            throw new NotImplementedException();
-        }
 
-        public void ViewDepartments()
-        {
-            throw new NotImplementedException();
-        }
+        public List<Department> ViewDepartments() => company.Departments.ToList();
 
-        public void ViewEmployees()
-        {
-            throw new NotImplementedException();
-        }
+        public List<Employee> ViewEmployees() => company.Employee.Values.ToList();
 
-        public void ViewLeaveRequests()
-        {
-            throw new NotImplementedException();
-        }
+        public List<LeaveRequest> ViewLeaveRequests() => company.LeaveRequests.ToList();
     }
 }

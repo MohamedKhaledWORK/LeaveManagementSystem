@@ -9,11 +9,11 @@ namespace LeaveManagementSystem.Interfaces
 {
     public interface ICompany
     {
-        public void ViewEmployees();
-        public void ViewDepartments();
-        public void ViewLeaveRequests();
-        public void AddEmployee(Employee employee);
-        public void RemoveEmployee(Employee employee);
+        public List<Employee> ViewEmployees();
+        public List<Department> ViewDepartments();
+        public List<LeaveRequest> ViewLeaveRequests();
+        public bool AddEmployee(Employee employee);
+        public bool RemoveEmployee(Employee employee);
         public Employee GetEmployee(int id);
 
     }
