@@ -30,9 +30,9 @@ namespace LeaveManagementSystem.UI
                         Console.WriteLine("No Leave Requests Found");
                         break;
                     }
-                    foreach (var req in leaveRequests)
+                    foreach (var reeq in leaveRequests)
                     {
-                        Console.WriteLine(req);
+                        Console.WriteLine(reeq);
                     }
 
                     do {
